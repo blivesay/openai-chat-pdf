@@ -1,3 +1,6 @@
+AI chat with uploaded documents. Code-along + mods by Brent L. Original project by Elliott Chong.
+https://www.youtube.com/watch?v=r895rFUbGtE
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
