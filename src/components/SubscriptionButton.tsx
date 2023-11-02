@@ -20,7 +20,7 @@ const SubscriptionButton = (props: Props) => {
   };
   return (
     <Button
-      className="ml-2 text-white bg-slate-700"
+      className="text-white bg-slate-700"
       disabled={loading}
       onClick={handleSubscription}
       variant="outline"

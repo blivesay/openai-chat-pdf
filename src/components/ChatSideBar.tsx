@@ -41,7 +41,7 @@ const ChatSideBar = ({ chats, chatId, isPro }: Props) => {
           </Link>
         ))}
       </div>
-      <div>
+      <div className="flex justify-center">
         <SubscriptionButton isPro={isPro} />
       </div>
     </div>

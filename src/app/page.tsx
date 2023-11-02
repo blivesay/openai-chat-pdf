@@ -39,7 +39,9 @@ export default async function Home() {
                 </Button>
               </Link>
             )}
-            <SubscriptionButton isPro={isPro} />
+            <div className="ml-2">
+              <SubscriptionButton isPro={isPro} />
+            </div>
           </div>
 
           <p className="max-w-xl mt-1 text-lg text-slate-600">
