@@ -20,7 +20,7 @@ export async function downloadFromS3(file_key: string): Promise<string> {
     try {
       const obj = await s3.send(getObj);
       // Create directory path
-      const directoryPath = path.join(__dirname, "tmp");
+      const directoryPath = "tmp";
       // Create the directory if it doesn't exist
       fs.mkdirSync(directoryPath, { recursive: true });
       // name downloaded file
