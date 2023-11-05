@@ -12,11 +12,14 @@ export async function getMatchesFromEmbeddings(
       apiKey: process.env.PINECONE_API_KEY!,
     });
     const pineconeIndex = await client.index("pdf-index");
+    // fileKey is from neonDB
+    // S3fileKey is the metadata key name in pineconeDB
     const fileKeyClean = convertToAscii(fileKey);
-    // future - search embeddings where in metadata, S3fileKey === fileKeyClean
+    // search embeddings where in metadata, S3fileKey === fileKeyClean
     const queryResult = await pineconeIndex.query({
       topK: 5,
       vector: embeddings,
+      filter: { S3fileKey: { $eq: fileKey } },
       includeMetadata: true,
     });
     return queryResult.matches || [];

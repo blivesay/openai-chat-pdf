@@ -82,8 +82,13 @@ export const truncateStringByBytes = (str: string, bytes: number) => {
 
 async function prepareDocument(page: PDFPage) {
   const { pageContent: origPageContent, metadata } = page;
+  //remove special characters except what is listed
+  const pageContentIntermed = origPageContent.replace(
+    /[^A-Z0-9@~`!@#$%^&()_=+[{}"\\';:"\/? >.<,-]+/gi,
+    ""
+  );
   //remove line breaks
-  const pageContent = origPageContent.replace(/\n/g, "");
+  const pageContent = pageContentIntermed.replace(/^\s*[\r\n]/gm, " ");
   const splitter = new RecursiveCharacterTextSplitter();
   const docs = await splitter.splitDocuments([
     new Document({
