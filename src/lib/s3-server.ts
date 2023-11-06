@@ -20,7 +20,7 @@ export async function downloadFromS3(file_key: string): Promise<string> {
     try {
       const obj = await s3.send(getObj);
       // Define directory path
-      const directoryPath = "tmp";
+      const directoryPath = "/tmp";
       // Create the directory if it doesn't exist (commented out for production on Vercel)
       // fs.mkdirSync(directoryPath, { recursive: true });
       // name downloaded file
