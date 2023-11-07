@@ -23,13 +23,19 @@ export async function POST(req: Request) {
     }
     const fileKey = _chats[0].fileKey;
     const lastMessage = messages[messages.length - 1];
+    const context = await getContext(lastMessage.content, fileKey);
 
     const prompt = {
       role: "system",
       content: `AI assistant is a powerful, human-like artificial intelligence.
         The traits of AI include expert knowledge, helpfulness, cleverness, and articulateness. AI is able to accurately answer nearly any question about any topic in conversation.
-        AI assistant will take into account all prior messages provided.
-        AI assistant may say "I'm sorry, but I don't know the answer to that question" when there is no high-confidence answer.
+        START CONTEXT BLOCK
+        ${context}
+        END OF CONTEXT BLOCK
+        AI assistant will take into account any CONTEXT BLOCK that is provided in a conversation.
+        If the context does not provide the answer to question, the AI assistant will say, "I'm sorry, but I don't know the answer to that question".
+        AI assistant will not apologize for previous responses, but instead will indicated new information was gained.
+        AI assistant will not invent anything that is not drawn directly from the context.
         `,
     };
 
